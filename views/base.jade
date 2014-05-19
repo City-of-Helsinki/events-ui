@@ -1,0 +1,32 @@
+doctype html
+html.no-js
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+    title LinkedEvents UI
+    meta(name='viewport', content='initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui')
+    meta(name='apple-mobile-web-app-capable' content='yes')
+    meta(name='apple-mobile-web-app-status-bar-style' content='black')
+    link(rel='stylesheet', href='//fonts.googleapis.com/css?family=Roboto:400,500,700')
+    link(rel='stylesheet', href='http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css')
+    script(src='http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js')
+    link(href='//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css', rel='stylesheet')
+    <!--[if lte IE 8]>
+    link(rel='stylesheet', href='http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.ie.css')
+    <![endif]-->
+    link(href='css/events.css', rel='stylesheet')
+    link(href='//cdnjs.cloudflare.com/ajax/libs/ratchet/2.0.2/css/ratchet.css', rel='stylesheet')
+    link(href='//cdnjs.cloudflare.com/ajax/libs/ratchet/2.0.2/css/ratchet-theme-android.css', rel='stylesheet')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/ratchet/2.0.2/js/ratchet.js')
+    block head
+
+    script(type='text/javascript').
+      window.app_settings = {
+        backend_url: "#{config.linkedevents_backend}",
+        static_path: "#{config.static_path}"
+      }
+  body.landing
+    block content
+    script(src="//code.jquery.com/jquery-1.10.2.min.js")
+    if config.livereload
+        script(src="//localhost:35729/livereload.js")
