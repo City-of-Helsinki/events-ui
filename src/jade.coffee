@@ -11,6 +11,14 @@ define 'app/jade', ['underscore', 'jquery', 'i18next', 'app/p13n'], (_, $, i18n,
             template_func = JST[key]
             return template_func
 
+        get_template_i18n: (name) ->
+            template_func = @get_template name
+            return (data) ->
+                data = _.clone data
+                data.t = i18n.t
+                data.t_attr = @t_attr
+                template_func data
+
         t_attr: (attr) ->
             return p13n.get_translated_attr attr
 
@@ -20,11 +28,8 @@ define 'app/jade', ['underscore', 'jquery', 'i18next', 'app/p13n'], (_, $, i18n,
                     throw "template must get an object argument"
             else
                 locals = {}
-            func = @get_template name
-            data = _.clone locals
-            data.t = i18n.t
-            data.t_attr = @t_attr
-            template_str = func data
+            func = @get_template_i18n name
+            template_str = func locals
             return $.trim template_str
 
     return new Jade

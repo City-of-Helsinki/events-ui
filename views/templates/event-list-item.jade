@@ -1,4 +1,8 @@
-li.table-view-cell
-    a.navigate-right(href='#' data-transition='slide-in')
-        =name.fi
-        p= start_time
+a.navigate-right(href='#' data-transition='slide-in')
+    =name
+    p
+        span Alku&nbsp;
+        span= time(start_time, 'L LT')
+    p
+        span Loppu&nbsp;
+        span= time(end_time, 'L LT')
